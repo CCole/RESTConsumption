@@ -1,0 +1,23 @@
+{
+  "name": "staff_wizard",
+  "version": "1.0.0",
+  "description": "data entry form wizard using the cbp theme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "webpack"
+  },
+  "author": "Cory",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "node-sass": "^3.9.3",
+    "nodemon": "^1.10.2",
+    "sass-loader": "^4.0.1",
+    "webpack": "^1.13.2"
+  }
+}

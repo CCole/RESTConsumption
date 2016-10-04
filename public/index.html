@@ -10,9 +10,17 @@
     </head>
 
     <body>
-        <div ng-controller="dataDisplay.controller as dataDisplay">
-            {{dataDisplay.staff}}
-        </div>
+        <table ng-controller="dataDisplay.controller as vm">
+            <!--{{vm.staff}}-->
+            <tr ng-repeat="s in vm.staff">
+                <td>{{s.id}}</td>
+                <td>{{s.staffType}}</td>
+                <td>{{s.npiNumber}}</td>
+                <td>{{s.firstName}}</td>
+                <td>{{s.lastName}}</td>
+                <td>{{s.middleName}}</td>
+            </tr>
+        </table>
     
     </body>
 </html>

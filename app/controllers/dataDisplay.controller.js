@@ -8,6 +8,6 @@ angular
 function displayData(staffData){
     var vm = this; 
     staffData.query(function(data){
-        vm.staff = data[0]; 
+        vm.staff = data; 
     });
 }

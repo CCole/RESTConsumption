@@ -6,25 +6,33 @@ webpackJsonp([0],[
 
 	__webpack_require__(1);
 	__webpack_require__(3);
+	__webpack_require__(7);
 	__webpack_require__(4);
-	__webpack_require__(5);
+	//require('angular-ui-bootstrap');
 
 	//setting the staffWizard Module - Only set this once then retrieve from this point after if I want to add stuff to it
-	angular.module('staffWizard', ['dataDisplay']);
+	angular.module('staffWizard', ['dataDisplay','dataEntry']);
 
 /***/ },
 /* 1 */,
 /* 2 */,
 /* 3 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	
+	__webpack_require__(4);
+
 	module.exports =
 	angular
-	    .module('dataEntry',[])
+	    .module('dataEntry',['staff'])
 	    .controller('dataEntry.controller', enterData);
 
-	function enterData(){
+	function enterData(staffData){
+	    var vm = this;
+	    //vm.staffType = "Enter Staff Type";
+	   // vm.newStaff = {}; //create object from all inputs and send to server - send over in payload
+	    vm.submit = function(){  
+	    console.log("newStaff"); 
+	    };
 
 	}
 
@@ -32,46 +40,28 @@ webpackJsonp([0],[
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
+	
 	__webpack_require__(5);
 
-	module.exports =
+	module.exports = 
 	angular
-	    .module('dataDisplay',['staff'])
-	    .controller('dataDisplay.controller', displayData);
+	    .module('staff', ['ngResource'])
+	    .factory('staffData', staffInterface); 
 
-	function displayData(staffData){
-	    var vm = this; 
-	    staffData.query(function(data){
-	        vm.staff = data; 
-	    });
+	function staffInterface($resource){
+	    return $resource("http://localhost:8080/staffWebService/rest/staff");
 	}
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	
 	__webpack_require__(6);
-
-	module.exports = 
-	angular
-	    .module('staff', ['ngResource'])
-	    .factory('staffData', getStaffData);
-
-	function getStaffData($resource){
-	    return $resource("http://localhost:8080/staffWebService/rest/staff");
-	}
-
-/***/ },
-/* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(7);
 	module.exports = 'ngResource';
 
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/**
@@ -938,6 +928,24 @@ webpackJsonp([0],[
 
 	})(window, window.angular);
 
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(4);
+
+	module.exports =
+	angular
+	    .module('dataDisplay',['staff'])
+	    .controller('dataDisplay.controller', displayData);
+
+	function displayData(staffData){
+	    var vm = this; 
+	    staffData.query(function(data){
+	        vm.staff = data; 
+	    });
+	}
 
 /***/ }
 ]);

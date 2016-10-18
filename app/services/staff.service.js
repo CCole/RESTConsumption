@@ -4,8 +4,8 @@ require('angular-resource');
 module.exports = 
 angular
     .module('staff', ['ngResource'])
-    .factory('staffData', getStaffData);
+    .factory('staffData', staffInterface); 
 
-function getStaffData($resource){
+function staffInterface($resource){
     return $resource("http://localhost:8080/staffWebService/rest/staff");
 }

@@ -7,8 +7,7 @@ angular
 
 function enterData(staffData){
         var vm = this; 
-         //create object from all inputs and send to server - send over in payload
-        
+         
         vm.postStaff = function() {
 
             var newStaff = { 

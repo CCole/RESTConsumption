@@ -33,6 +33,7 @@ webpackJsonp([0],[
 
 	function enterData(staffData){
 	        var vm = this; 
+	        console.log(vm.npiNumber);
 	        
 	        vm.placeMask = function() {
 	            vm.npiMask = "9999999999";
@@ -40,6 +41,9 @@ webpackJsonp([0],[
 
 	        vm.removeMask = function(){
 	            //if there are no values in the form input then remove mask on blur
+	            if(typeof vm.npiNumber === "undefined"){
+	                vm.npiMask = "";
+	            }
 	        };
 
 

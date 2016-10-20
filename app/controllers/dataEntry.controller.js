@@ -7,6 +7,7 @@ angular
 
 function enterData(staffData){
         var vm = this; 
+        console.log(vm.npiNumber);
         
         vm.placeMask = function() {
             vm.npiMask = "9999999999";
@@ -14,6 +15,9 @@ function enterData(staffData){
 
         vm.removeMask = function(){
             //if there are no values in the form input then remove mask on blur
+            if(typeof vm.npiNumber === "undefined"){
+                vm.npiMask = "";
+            }
         };
 
 

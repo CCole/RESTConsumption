@@ -46,7 +46,7 @@
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <label for="npiNumber" class="mdl-textfield__label">National provider identifier #</label>
-                <input id="npiNumber" class="mdl-textfield__input" type="text" ng-model="vm.npiNumber"/>
+                <input id="npiNumber" class="mdl-textfield__input" type="text" ng-model="vm.npiNumber" ui-mask="{{vm.npiMask}}"/>
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

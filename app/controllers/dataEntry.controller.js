@@ -7,7 +7,7 @@ angular
 
 function enterData(staffData){
         var vm = this; 
-         
+        vm.npiMask = "9999999999";
         vm.postStaff = function() {
 
             var newStaff = { 

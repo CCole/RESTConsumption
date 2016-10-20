@@ -7,7 +7,16 @@ angular
 
 function enterData(staffData){
         var vm = this; 
-        vm.npiMask = "9999999999";
+        
+        vm.placeMask = function() {
+            vm.npiMask = "9999999999";
+        };
+
+        vm.removeMask = function(){
+            //if there are no values in the form input then remove mask on blur
+        };
+
+
         vm.postStaff = function() {
 
             var newStaff = { 

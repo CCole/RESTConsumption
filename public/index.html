@@ -48,8 +48,8 @@
                 <label for="npiNumber" class="mdl-textfield__label">National provider identifier #</label>
                 <input id="npiNumber" class="mdl-textfield__input" type="text" 
                     ng-model="vm.npiNumber" ng-focus="vm.placeMask()" ng-blur="vm.removeMask()" ui-mask="{{vm.npiMask}}" 
-                    data-html="true" data-toggle="popover" data-container="body" data-trigger="focus" 
-                    data-content="The National Provider Idenifier is a unique 10-digit identifier number issued to health care providers>"/>
+                    uib-popover="The National Provider Idenifier is a unique 10-digit identifier number issued to health care providers" popover-trigger="'mouseenter'"
+                    />
             </div>
 
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

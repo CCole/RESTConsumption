@@ -38,13 +38,35 @@
             </tbody>
         </table>
        
-        <form ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm" >
-            <input type="text" name="vm.staffType" ng-model="vm.staffType"/>
-            <input type="text" ng-model="vm.npiNumber"/>
-            <input type="text" ng-model="vm.firstName"/>
-            <input type="text" ng-model="vm.lastName"/>
-            <input type="text" ng-model="vm.middleName"/>
-            <input type="submit" value="submit"/>
+        <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm" >
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label for="staffType" class="mdl-textfield__label">Staff type</label>
+                <input id="staffType" class="mdl-textfield__input" type="text" ng-model="vm.staffType"/>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label for="npiNumber" class="mdl-textfield__label">National provider identifier #</label>
+                <input id="npiNumber" class="mdl-textfield__input" type="text" 
+                    ng-model="vm.npiNumber" ng-focus="vm.placeMask()" ng-blur="vm.removeMask()" ui-mask="{{vm.npiMask}}" 
+                    uib-popover-html="vm.npiLink"
+                    popover-trigger="'mouseenter'" popover-popup-close-delay="4000"/>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label for="firstName" class="mdl-textfield__label">First name</label>
+                <input id="firstName" class="mdl-textfield__input" type="text" ng-model="vm.firstName"/>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label for="lastName" class="mdl-textfield__label">Last name</label>
+                <input id="lastName" class="mdl-textfield__input" type="text" ng-model="vm.lastName"/>
+            </div>
+
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <label for="middleName" class="mdl-textfield__label">Middle name</label>
+                <input id="middleName" class="mdl-textfield__input" type="text" ng-model="vm.middleName"/>
+            </div>
+            <input type="submit" value="submit" class="btn btn-primary"/>
         </form> 
         
     </body>

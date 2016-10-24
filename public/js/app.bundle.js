@@ -11,12 +11,14 @@ webpackJsonp([0],[
 	__webpack_require__(8);
 	__webpack_require__(10);
 
+
 	//setting the staffWizard Module - Only set this once then retrieve from this point after if I want to add stuff to it
 	angular.module('staffWizard', 
 	['dataDisplay',
 	'dataEntry',
 	'ui.mask',
 	'ui.bootstrap'
+
 	]);
 
 /***/ },
@@ -32,10 +34,11 @@ webpackJsonp([0],[
 	    .module('dataEntry',['staff'])
 	    .controller('dataEntry.controller', enterData);
 
-	function enterData(staffData){
+	function enterData(staffData, $sce){
 	        var vm = this; 
-	        console.log(vm.npiNumber);
 	        
+	        
+	    
 	        vm.placeMask = function() {
 	            vm.npiMask = "9999999999";
 	        };
@@ -44,9 +47,9 @@ webpackJsonp([0],[
 	            //if there are no values in the form input then remove mask on blur
 	            //not clear if angular-ui-mask implements a function that removes the placeholder if a user does not 
 	            //finish entry and then clicks away. Definitly rethink this.
-	           if(typeof vm.npiNumber !== "undefined") {
+	          /* if(typeof vm.npiNumber !== "undefined") {
 	               console.log(vm.npiNumber.length);
-	           }
+	           }*/
 	            if(typeof vm.npiNumber === "undefined" || (vm.npiNumber.length == 0)){ 
 	                vm.npiMask = "";
 	            }
@@ -71,6 +74,7 @@ webpackJsonp([0],[
 	            });
 	    };
 
+	    vm.npiLink = $sce.trustAsHtml('<b>The National Provider Identifier</b>&nbsp;is a unique 10-digit identifier number issued to health care providers. <a target="_blank" href="https://npiregistry.cms.hhs.gov/">Learn more</a>');
 	}
 
 /***/ },

@@ -5,10 +5,11 @@ angular
     .module('dataEntry',['staff'])
     .controller('dataEntry.controller', enterData);
 
-function enterData(staffData){
+function enterData(staffData, $sce){
         var vm = this; 
-        console.log(vm.npiNumber);
         
+        
+    
         vm.placeMask = function() {
             vm.npiMask = "9999999999";
         };
@@ -44,4 +45,5 @@ function enterData(staffData){
             });
     };
 
+    vm.npiLink = $sce.trustAsHtml('<b>The National Provider Identifier</b>&nbsp;is a unique 10-digit identifier number issued to health care providers. <a target="_blank" href="https://npiregistry.cms.hhs.gov/">Learn more</a>');
 }

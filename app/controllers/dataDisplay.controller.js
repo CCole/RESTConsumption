@@ -13,5 +13,14 @@ function displayData(staffData){
 
     vm.selectStaff = function(s){
         console.log(s.SQUIRE_STAFF_ID);
+        return s.SQUIRE_STAFF_ID; 
+    };
+
+    vm.delStaff = function(){
+
+    };
+
+    vm.editStaff = function(){
+        
     };
 }

@@ -18,6 +18,7 @@
         <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
             <thead>
                 <tr>
+                    <th>Action</th>
                     <th>ID</th>
                     <th>Staff Type</th>
                     <th>NPI Number</th>
@@ -28,6 +29,12 @@
             </thead>
             <tbody>
                 <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)">
+                    <td>
+                        <div class="btn-group">
+                        <input type="button" value="Edit" class="btn btn-warning"/>
+                        <input type="button" value="Delete" class="btn btn-danger"/>
+                        </div>
+                    </td>
                     <td>{{s.SQUIRE_STAFF_ID}}</td>
                     <td>{{s.Staff_Type}}</td>
                     <td>{{s.NPI_Number}}</td>

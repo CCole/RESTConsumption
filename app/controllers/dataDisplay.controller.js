@@ -10,4 +10,8 @@ function displayData(staffData){
     staffData.query(function(data){
         vm.staff = data; 
     });
+
+    vm.selectStaff = function(s){
+        console.log(s.SQUIRE_STAFF_ID);
+    };
 }

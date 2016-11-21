@@ -27,7 +27,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="s in vm.staff">
+                <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)">
                     <td>{{s.SQUIRE_STAFF_ID}}</td>
                     <td>{{s.Staff_Type}}</td>
                     <td>{{s.NPI_Number}}</td>

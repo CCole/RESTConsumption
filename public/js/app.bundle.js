@@ -90,7 +90,7 @@ webpackJsonp([0],[
 	    .factory('staffData', staffInterface); 
 
 	function staffInterface($resource){
-	    return $resource("http://localhost:8080/staffWebService/rest/staff");
+	    return $resource("http://localhost:8080/staffWebService/rest/staff/:id");
 	}
 
 /***/ },
@@ -986,6 +986,10 @@ webpackJsonp([0],[
 	    staffData.query(function(data){
 	        vm.staff = data; 
 	    });
+
+	    vm.selectStaff = function(s){
+	        console.log(s.SQUIRE_STAFF_ID);
+	    };
 	}
 
 /***/ },

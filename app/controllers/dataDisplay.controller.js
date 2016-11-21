@@ -7,12 +7,15 @@ angular
 
 function displayData(staffData){
     var vm = this; 
+    vm.btnGrp = false;
+    
     staffData.query(function(data){
         vm.staff = data; 
     });
 
     vm.selectStaff = function(s){
         console.log(s.SQUIRE_STAFF_ID);
+        vm.btnGrp = !vm.btnGrp; 
         return s.SQUIRE_STAFF_ID; 
     };
 

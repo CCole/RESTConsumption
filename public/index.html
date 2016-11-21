@@ -30,7 +30,7 @@
             <tbody>
                 <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)">
                     <td>
-                        <div class="btn-group">
+                        <div ng-show="vm.btnGrp" class="btn-group">
                         <input type="button" value="Edit" class="btn btn-warning"/>
                         <input type="button" value="Delete" class="btn btn-danger"/>
                         </div>

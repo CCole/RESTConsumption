@@ -30,9 +30,9 @@
             <tbody>
                 <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)">
                     <td>
-                        <div ng-show="vm.btnGrp" class="btn-group">
-                        <input type="button" value="Edit" class="btn btn-warning"/>
-                        <input type="button" value="Delete" class="btn btn-danger"/>
+                        <div ng-show="s.btnGrp" class="btn-group">
+                        <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord()"/>
+                        <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff()"/>
                         </div>
                     </td>
                     <td>{{s.SQUIRE_STAFF_ID}}</td>

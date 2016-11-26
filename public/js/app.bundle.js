@@ -90,7 +90,7 @@ webpackJsonp([0],[
 	    .factory('staffData', staffInterface); 
 
 	function staffInterface($resource){
-	    return $resource("http://localhost:8080/staffWebService/rest/staff/:id");
+	    return $resource("http://localhost:8080/staffWebService/rest/staff/:id", {id: '@SQUIRE_STAFF_ID'});
 	}
 
 /***/ },
@@ -982,8 +982,11 @@ webpackJsonp([0],[
 	    .controller('dataDisplay.controller', displayData);
 
 	function displayData(staffData){
-	    var vm = this; 
-	    vm.btnGrp = false;
+	    var vm = this;
+	    var selection = null;  
+	    
+
+	    
 	    
 	    staffData.query(function(data){
 	        vm.staff = data; 
@@ -991,18 +994,37 @@ webpackJsonp([0],[
 
 	    vm.selectStaff = function(s){
 	        console.log(s.SQUIRE_STAFF_ID);
-	        vm.btnGrp = !vm.btnGrp; 
+	       // s.btnGrp = false;
+	        s.btnGrp = !s.btnGrp; 
+	        console.log(s);
 	        return s.SQUIRE_STAFF_ID; 
 	    };
 
-	    vm.delStaff = function(){
+	   
 
+	    vm.delStaff = function(s){
+	        selection = s.SQUIRE_STAFF_ID;
+	        staffData.$delete({id: selection});
 	    };
 
-	    vm.editStaff = function(){
-	        
+	    vm.editRecord = function(s){
+	            var editStaff = {
+	            staffType: s.staffType,
+	            npiNumber: s.npiNumber,
+	            firstName: s.firstName,
+	            lastName: s.lastName,
+	            middleName: s.middleName,
+	            staffId: s.SQUIRE_STAFF_ID
+	        };
+	      return editStaff;  
 	    };
+
+	    vm.saveStaff = function(editStaff){
+
+	    }
 	}
+
+	//add excpetions handling
 
 /***/ },
 /* 8 */

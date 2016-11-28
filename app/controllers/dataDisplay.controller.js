@@ -8,18 +8,14 @@ angular
 function displayData(staffData){
     var vm = this;
     var selection = null;  
-    
+    vm.selected = {};
 
-    
-    
     staffData.query(function(data){
         vm.staff = data; 
     });
 
     vm.selectStaff = function(s){
-        console.log(s.SQUIRE_STAFF_ID);
-        s.btnGrp = !s.btnGrp; 
-        console.log(s);
+        vm.selected = angular.copy(s);
         return s.SQUIRE_STAFF_ID; 
     };
 
@@ -30,16 +26,17 @@ function displayData(staffData){
         staffData.$delete({id: selection});
     };
 
+    vm.getTemplate = function(s){
+        if (s.SQUIRE_STAFF_ID === vm.selected.SQUIRE_STAFF_ID){
+            return 'edit';
+        }
+        else return 'display';
+    };
+
     vm.editRecord = function(s){
-            var editStaff = {
-            staffType: s.staffType,
-            npiNumber: s.npiNumber,
-            firstName: s.firstName,
-            lastName: s.lastName,
-            middleName: s.middleName,
-            staffId: s.SQUIRE_STAFF_ID
-        };
-      return editStaff;  
+            var editStaff = staffData.get({id: s.SQUIRE_STAFF_ID});
+            
+      console.log(editStaff);  
     };
 
     vm.saveStaff = function(editStaff){

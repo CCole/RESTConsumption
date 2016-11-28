@@ -28,22 +28,40 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)">
-                    <td>
-                        <div ng-show="s.btnGrp" class="btn-group">
-                        <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord()"/>
-                        <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff()"/>
-                        </div>
-                    </td>
-                    <td>{{s.SQUIRE_STAFF_ID}}</td>
-                    <td>{{s.Staff_Type}}</td>
-                    <td>{{s.NPI_Number}}</td>
-                    <td>{{s.First_Name}}</td>
-                    <td>{{s.Last_Name}}</td>
-                    <td>{{s.Middle_Name}}</td>
+                <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
+                   <!--moved table data into an inline template. Chore: move the template into separate file-->
                 </tr>
             </tbody>
         </table>
+         <script type="text/ng-template" id="display">
+            <td>
+                <div class="btn-group">
+                <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
+                <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff(s)"/>
+                </div>
+            </td>
+            <td>{{s.SQUIRE_STAFF_ID}}</td>
+            <td>{{s.Staff_Type}}</td>
+            <td>{{s.NPI_Number}}</td>
+            <td>{{s.First_Name}}</td>
+            <td>{{s.Last_Name}}</td>
+            <td>{{s.Middle_Name}}</td>
+        </script>
+
+        <script type="text/ng-template" id="edit">
+            <td>
+                <div class="btn-group">
+                <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
+                <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff(s)"/>
+                </div>
+            </td>
+            <td><input type="text" ng-model="s.SQUIRE_STAFF_ID"/></td>
+            <td><input type="text" ng-model="s.Staff_Type"/></td>
+            <td><input type="text" ng-model="s.NPI_Number"/></td>
+            <td><input type="text" ng-model="s.First_Name"/></td>
+            <td><input type="text" ng-model="s.Last_Name"/></td>
+            <td><input type="text" ng-model="s.Middle_Name"/></td>
+        </script>
        
         <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm" >
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

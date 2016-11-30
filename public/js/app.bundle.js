@@ -1002,7 +1002,7 @@ webpackJsonp([0],[
 	//Delete staff
 	    vm.delStaff = function(s){
 	        selection = s.SQUIRE_STAFF_ID;
-	        staffData.$delete({id: selection});
+	        staffData.delete({id: selection});
 	    };
 	//Display one of two templates - one for editing records and one for viewing
 	    vm.getTemplate = function(s){

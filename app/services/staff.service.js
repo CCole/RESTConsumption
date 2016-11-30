@@ -7,5 +7,10 @@ angular
     .factory('staffData', staffInterface); 
 
 function staffInterface($resource){
-    return $resource("http://localhost:8080/staffWebService/rest/staff");
+    return $resource("http://localhost:8080/staffWebService/rest/staff/:id", 
+    {id: '@SQUIRE_STAFF_ID'}, 
+    {
+        'update': { method:'PUT' }
+    }
+    );
 }

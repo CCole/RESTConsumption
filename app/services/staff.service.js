@@ -8,9 +8,11 @@ angular
 
 function staffInterface($resource){
     return $resource("http://localhost:8080/staffWebService/rest/staff/:id", 
-    {id: '@SQUIRE_STAFF_ID'}, 
-    {
-        'update': { method:'PUT' }
-    }
+        {id: '@SQUIRE_STAFF_ID'}, 
+        {
+            'update': { method:'PUT' }
+        }
     );
 }
+
+//staffInterface should return a resource object

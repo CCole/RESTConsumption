@@ -15,38 +15,42 @@
     </head>
 
     <body>
-        <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
-            <thead>
-                <tr>
-                    <th>Action</th>
-                    <th>ID</th>
-                    <th>Staff Type</th>
-                    <th>NPI Number</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Middle Name</th>
-                </tr>
-            </thead>
-        </table>
-        <div class="floating-table-body" style="max-height: 200px;">
-        <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
-            <thead>
-                <tr>
-                    <th>Action</th>
-                    <th>ID</th>
-                    <th>Staff Type</th>
-                    <th>NPI Number</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Middle Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
-                   <!--moved table data into an inline template. Chore: move the template into separate file-->
-                </tr>
-            </tbody>
-        </table>
+        <div class="container">
+            <div class="cbp-card-container">
+                <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
+                    <thead>
+                        <tr>
+                            <th>Action</th>
+                            <th>ID</th>
+                            <th>Staff Type</th>
+                            <th>NPI Number</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Middle Name</th>
+                        </tr>
+                    </thead>
+                </table>
+                <div class="floating-table-body" style="max-height: 200px;">
+                    <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>ID</th>
+                                <th>Staff Type</th>
+                                <th>NPI Number</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Middle Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
+                            <!--moved table data into an inline template. Chore: move the template into separate file-->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
          <script type="text/ng-template" id="display">
             <td>

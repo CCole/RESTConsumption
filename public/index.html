@@ -83,6 +83,9 @@
         <div class="cbp-card-container container-fluid  row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="cbp-card cbp-card-shadow ">
+                    <div class="cbp-card__title">
+                        <h3 class="cbp-card__title-text">Staff Wizard</h3>
+                    </div>
                     <div class="cbp-card__actions cbp-card--border">
                         <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm" >
                             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -112,7 +115,9 @@
                                 <label for="middleName" class="mdl-textfield__label">Middle name</label>
                                 <input id="middleName" class="mdl-textfield__input" type="text" ng-model="vm.middleName"/>
                             </div>
-                            <input type="submit" value="submit" class="btn btn-primary"/>
+                            <div class="cbp-card__actions cbp-card--border">
+                                <input type="submit" value="submit" class="btn btn-primary pull-right"/>
+                            </div>
                     </div>
                     </form>
                 </div>

@@ -1,10 +1,18 @@
 var gulp = require('gulp');
 //var plugins = require('gulp-load-plugins')(); Dont need this to just copy files to directory
 
+var sass = require('gulp-sass');
+
 //ignoring bootstrap and jquery - in attempt at using bootstrap ui for angular
 gulp.task('copyCBPcss', function(){
     return gulp.src('./node_modules/cbp-theme/dist/styles/cbp-theme.css')
     .pipe(gulp.dest('./public/styles'));
+});
+//process my custom sass file
+gulp.task('customStyle', function(){
+    gulp.src('./public/styles/sass/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/styles'))
 });
 
 gulp.task('copyCBPjs', function(){
@@ -34,4 +42,4 @@ gulp.task('copyJqueryInputMask', function(){
 
 
 
-gulp.task('default', ['copyCBPcss','copyCBPjs','copyCBPfonts','copyJquery','copyBootstrap']);
+gulp.task('default', ['copyCBPcss','copyCBPjs','copyCBPfonts','copyJquery','copyBootstrap','customStyle']);

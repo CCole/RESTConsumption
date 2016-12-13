@@ -4,25 +4,20 @@ require('angular-animate');
 
 module.exports =
 angular
-    .module('dataEntry',['staff', 'ui.router', 'ngAnimate'])
+    .module('dataEntry',['staff', 'ui.router'])
     .config(function($stateProvider, $urlRouterProvider){
         
         $stateProvider
-        .state('form', {
-            url: '/form',
-            templateUrl: 'index.html',
-            controller: 'dataEntry.controller'
-        })
-        .state('form.staff', {
+        .state('staff', {
             url: '/staff',
             templateUrl: 'form.staff.html'
         })
-        .state('form.specialty', {
+        .state('specialty', {
             url: '/specialty',
             templateUrl: 'form.specialty.html'
         })
 
-        $urlRouterProvider.otherwise('/form/staff');
+        $urlRouterProvider.otherwise('/staff');
     })
     .controller('dataEntry.controller', enterData);
 

@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="staffWizard">
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-       
-        <script src="js/vendor.bundle.js"></script>
-        <script src="js/jquery.js"></script>
-        <script src="js/jquery.inputmask.bundle.js"></script>
-        <script src="js/bootstrap.js"></script>
-        <script src="js/cbp-theme.js"></script>
-        <script src="js/app.bundle.js"></script>
-        <link media="screen" href="styles/cbp-theme.css" rel="stylesheet"/>
-        <link media="screen" href="styles/custom.css" rel="stylesheet"/>
-    </head>
 
-    <body>
-        <div class="container">
-            <div class="cbp-card-container">
-                <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="js/vendor.bundle.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.inputmask.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/cbp-theme.js"></script>
+    <script src="js/app.bundle.js"></script>
+    <link media="screen" href="styles/cbp-theme.css" rel="stylesheet" />
+    <link media="screen" href="styles/custom.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="cbp-card-container">
+            <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>ID</th>
+                        <th>Staff Type</th>
+                        <th>NPI Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Middle Name</th>
+                    </tr>
+                </thead>
+            </table>
+            <div class="floating-table-body" style="max-height: 200px;">
+                <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
                     <thead>
                         <tr>
                             <th>Action</th>
@@ -30,30 +45,16 @@
                             <th>Middle Name</th>
                         </tr>
                     </thead>
-                </table>
-                <div class="floating-table-body" style="max-height: 200px;">
-                    <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
-                        <thead>
-                            <tr>
-                                <th>Action</th>
-                                <th>ID</th>
-                                <th>Staff Type</th>
-                                <th>NPI Number</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Middle Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
+                    <tbody>
+                        <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
                             <!--moved table data into an inline template. Chore: move the template into separate file-->
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-         <script type="text/ng-template" id="display">
+    </div>
+    <script type="text/ng-template" id="display">
             <td>
                 
             </td>
@@ -65,7 +66,7 @@
             <td>{{s.Middle_Name}}</td>
         </script>
 
-        <script type="text/ng-template" id="edit">
+    <script type="text/ng-template" id="edit">
             <td>
                 <div class="btn-group">
                 <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
@@ -79,50 +80,21 @@
             <td><input type="text" ng-model="s.Last_Name"/></td>
             <td><input type="text" ng-model="s.Middle_Name"/></td>
         </script>
-       
-        <div class="cbp-card-container container-fluid  row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="cbp-card cbp-card-shadow ">
-                    <div class="cbp-card__title">
-                        <h2>Staff Wizard</h2>
-                    </div>
-                    <div class="cbp-card__actions cbp-card--border">
-                        <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm" >
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="staffType" class="mdl-textfield__label">Staff type</label>
-                                <input id="staffType" class="mdl-textfield__input" type="text" ng-model="vm.staffType"/>
-                            </div>
-                
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="npiNumber" class="mdl-textfield__label">National provider identifier #</label>
-                                <input id="npiNumber" class="mdl-textfield__input" type="text" 
-                                    ng-model="vm.npiNumber" ng-focus="vm.placeMask()" ng-blur="vm.removeMask()" ui-mask="{{vm.npiMask}}" 
-                                    uib-popover-html="vm.npiLink"
-                                    popover-trigger="'mouseenter'" popover-popup-close-delay="4000"/>
-                            </div>
-                
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="firstName" class="mdl-textfield__label">First name</label>
-                                <input id="firstName" class="mdl-textfield__input" type="text" ng-model="vm.firstName"/>
-                            </div>
-                
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="lastName" class="mdl-textfield__label">Last name</label>
-                                <input id="lastName" class="mdl-textfield__input" type="text" ng-model="vm.lastName"/>
-                            </div>
-                
-                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                <label for="middleName" class="mdl-textfield__label">Middle name</label>
-                                <input id="middleName" class="mdl-textfield__input" type="text" ng-model="vm.middleName"/>
-                            </div>
-                            <div class="cbp-card__actions cbp-card--border">
-                                <input type="submit" value="submit" class="btn btn-primary pull-right"/>
-                            </div>
-                    </div>
+
+    <div class="cbp-card-container container-fluid  row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="cbp-card cbp-card-shadow ">
+                <div class="cbp-card__title">
+                    <h2>Staff Wizard</h2>
+                </div>
+                <div class="cbp-card__actions cbp-card--border">
+                    <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm">
+                        <div id="form-views" ui-view></div>
                     </form>
                 </div>
             </div>
-            </div>
-        
-    </body>
+        </div>
+
+</body>
+
 </html>

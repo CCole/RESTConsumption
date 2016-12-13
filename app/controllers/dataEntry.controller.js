@@ -10,7 +10,7 @@ angular
         $stateProvider
         .state('form', {
             url: '/form',
-            templateUrl: 'form.html',
+            templateUrl: 'index.html',
             controller: 'dataEntry.controller'
         })
         .state('form.staff', {

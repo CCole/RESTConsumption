@@ -1,8 +1,18 @@
 require('../services/staff.service.js');
+require('angular-ui-router');
+require('angular-animate');
 
 module.exports =
 angular
-    .module('dataEntry',['staff'])
+    .module('dataEntry',['staff', 'ui.router', 'ngAnimate'])
+    .config(function($stateProvider, $urlRouterProvider){
+        $stateProvider
+        .state('form', {
+            url: '/form',
+            templateUrl: 'form.html',
+            controller: 'dataEntry.controller'
+        })
+    })
     .controller('dataEntry.controller', enterData);
 
 function enterData(staffData, $sce){

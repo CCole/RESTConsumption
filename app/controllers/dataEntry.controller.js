@@ -6,12 +6,23 @@ module.exports =
 angular
     .module('dataEntry',['staff', 'ui.router', 'ngAnimate'])
     .config(function($stateProvider, $urlRouterProvider){
+        
         $stateProvider
         .state('form', {
             url: '/form',
             templateUrl: 'form.html',
             controller: 'dataEntry.controller'
         })
+        .state('form.staff', {
+            url: '/staff',
+            templateUrl: 'form.staff.html'
+        })
+        .state('form.specialty', {
+            url: '/specialty',
+            templateUrl: 'form.specialty.html'
+        })
+
+        $urlRouterProvider.otherwise('/form/staff');
     })
     .controller('dataEntry.controller', enterData);
 

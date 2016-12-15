@@ -40,6 +40,15 @@ gulp.task('copyJqueryInputMask', function(){
     .pipe(gulp.dest('./public/js'));
 });
 
+gulp.task('copyAnimate1', function(){
+    return gulp.src('./node_modules/animate.css/source/sliding_entrances/slideInLeft.css')
+    .pipe(gulp.dest('./public/styles'));
+});
+
+gulp.task('copyAnimate', function(){
+    return gulp.src('./node_modules/animate.css/source/sliding_exits/slideOutRight.css')
+    .pipe(gulp.dest('./public/styles'));
+});
 
 
 gulp.task('default', ['copyCBPcss','copyCBPjs','copyCBPfonts','copyJquery','copyBootstrap','customStyle']);

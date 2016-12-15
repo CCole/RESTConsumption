@@ -4,7 +4,7 @@ require('angular-animate');
 
 module.exports =
     angular
-        .module('dataEntry', ['staff', 'ui.router'])
+        .module('dataEntry', ['staff', 'ui.router','ngAnimate'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $stateProvider

@@ -9,6 +9,6 @@
   }
 }
 
-.slideInLeft .ng-enter  {
+.slideInLeft.ng-enter  {
   animation-name: slideInLeft;
 }

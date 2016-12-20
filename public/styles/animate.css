@@ -13,6 +13,7 @@
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  
 }
 
 .animated.infinite {
@@ -3117,7 +3118,7 @@
   }
 }
 
-.slideInDown {
+.slideInDown.ng-enter {
   -webkit-animation-name: slideInDown;
   animation-name: slideInDown;
 }
@@ -3182,6 +3183,7 @@
 .slideInRight.ng-enter {
   -webkit-animation-name: slideInRight;
   animation-name: slideInRight;
+  position: absolute;
 }
 
 @-webkit-keyframes slideInUp {
@@ -3210,7 +3212,7 @@
   }
 }
 
-.slideInUp {
+.slideInUp.ng-enter {
   -webkit-animation-name: slideInUp;
   animation-name: slideInUp;
 }
@@ -3241,7 +3243,7 @@
   }
 }
 
-.slideOutDown {
+.slideOutDown.ng-enter {
   -webkit-animation-name: slideOutDown;
   animation-name: slideOutDown;
 }
@@ -3275,6 +3277,7 @@
 .slideOutLeft.ng-leave {
   -webkit-animation-name: slideOutLeft;
   animation-name: slideOutLeft;
+  position: absolute;
 }
 
 @-webkit-keyframes slideOutRight {
@@ -3334,7 +3337,7 @@
   }
 }
 
-.slideOutUp {
+.slideOutUp.ng-leave {
   -webkit-animation-name: slideOutUp;
   animation-name: slideOutUp;
 }

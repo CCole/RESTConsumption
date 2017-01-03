@@ -82,36 +82,40 @@
             <td><input type="text" ng-model="s.Middle_Name"/></td>
         </script>
 
-    <div class="row">
+    <div class="row" ng-controller="dataEntry.controller as vm">
         <div class="col-md-4 col-md-offset-2">
             <div class="cbp-card-container container-fluid">
                 <div id="form.card" class="cbp-card cbp-card-shadow" >
 
-                    <div id="form.title" class="cbp-card__title">
-                        <h2>Staff Wizard</h2>
-                    </div>
-
-                    <div class="cbp-card__actions cbp-card--border">
-                        <div id="form.steps">
-                            <h4>Steps</h4>
-                            <ol class="nav-steps nav-stacked">
-                                <li ui-sref-active="active" ui-sref="staff">
-                                    <span> Staff</span>
-                                </li>
-                                <li ui-sref-active="active" ui-sref="specialty">
-                                    <span> Specialty</span>
-                                </li>
-                            </ol>
+                  <script type="text/ng-template" id="multiStepModal.html">
+                        <div id="form.title" class="cbp-card__title modal-header">
+                            <h2 class="modal-title">Staff Wizard</h2>
                         </div>
+    
+                        <div class="cbp-card__actions cbp-card--border modal-body">
+                            <div id="form.steps">
+                                <h4>Steps</h4>
+                                <ol class="nav-steps nav-stacked">
+                                    <li ui-sref-active="active" ui-sref="staff">
+                                        <span> Staff</span>
+                                    </li>
+                                    <li ui-sref-active="active" ui-sref="specialty">
+                                        <span> Specialty</span>
+                                    </li>
+                                </ol>
+                            </div>
+    
+                            <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" >
+                                <div ui-view id="formViews" class="animated slideInRight slideOutLeft"></div>
+                            </form>
+    
+                        </div>
+                  </script>
 
-                        <form class="form" role="form" name="staffForm" ng-submit="vm.postStaff()" ng-controller="dataEntry.controller as vm">
-                            <div ui-view id="formViews" class="animated slideInRight slideOutLeft"></div>
-                        </form>
-
-                    </div>
                 </div>
             </div>
         </div>
+        <button type="button" class="btn btn-default" ng-click="$ctrl.open()">Open staff wizard!</button>
     </div>
 </body>
 

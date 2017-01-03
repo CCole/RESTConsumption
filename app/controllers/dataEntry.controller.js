@@ -57,6 +57,15 @@ function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
             middleName: vm.middleName
         };
 
+        var newSpecialty = {
+            specialty: vm.specialty,
+            specialtyDescription: vm.specialtyDescription,
+            credentialNumber: vm.credentialNumber,
+            issueDate: vm.issueDate,
+            issuingOrg: vm.issuingOrg
+
+        };
+
         console.log(newStaff);
         console.log(vm.staffType);
 

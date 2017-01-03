@@ -19,22 +19,9 @@
 
 <body>
     <div class="container">
-        <div class="cbp-card-container">
-            <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
-                <thead>
-                    <tr>
-                        <th>Action</th>
-                        <th>ID</th>
-                        <th>Staff Type</th>
-                        <th>NPI Number</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Middle Name</th>
-                    </tr>
-                </thead>
-            </table>
-            <div class="floating-table-body" style="max-height: 200px;">
-                <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
+        <div class="row">
+            <div class="well well-lg">
+                <table class="cbp-table-selectable mdl-js-data-table floating-table-header">
                     <thead>
                         <tr>
                             <th>Action</th>
@@ -46,48 +33,64 @@
                             <th>Middle Name</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
-                            <!--moved table data into an inline template. Chore: move the template into separate file-->
-                        </tr>
-                    </tbody>
                 </table>
-            </div>
-        </div>
+                <div class="floating-table-body" style="max-height: 200px;">
+    <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
+        <thead>
+            <tr>
+                <th>Action</th>
+                <th>ID</th>
+                <th>Staff Type</th>
+                <th>NPI Number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Middle Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
+                <!--moved table data into an inline template. Chore: move the template into separate file-->
+            </tr>
+        </tbody>
+    </table>
     </div>
+    
+    
     <script type="text/ng-template" id="display">
-            <td>
-                
-            </td>
-            <td>{{s.SQUIRE_STAFF_ID}}</td>
-            <td>{{s.Staff_Type}}</td>
-            <td>{{s.NPI_Number}}</td>
-            <td>{{s.First_Name}}</td>
-            <td>{{s.Last_Name}}</td>
-            <td>{{s.Middle_Name}}</td>
-        </script>
-
+                <td>
+                    
+                </td>
+                <td>{{s.SQUIRE_STAFF_ID}}</td>
+                <td>{{s.Staff_Type}}</td>
+                <td>{{s.NPI_Number}}</td>
+                <td>{{s.First_Name}}</td>
+                <td>{{s.Last_Name}}</td>
+                <td>{{s.Middle_Name}}</td>
+            </script>
+    
     <script type="text/ng-template" id="edit">
-            <td>
-                <div class="btn-group">
-                <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
-                <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff(s)"/>
-                </div>
-            </td>
-            <td>{{s.SQUIRE_STAFF_ID}}</td>
-            <td><input type="text" ng-model="s.Staff_Type"/></td>
-            <td><input type="text" ng-model="s.NPI_Number"/></td>
-            <td><input type="text" ng-model="s.First_Name"/></td>
-            <td><input type="text" ng-model="s.Last_Name"/></td>
-            <td><input type="text" ng-model="s.Middle_Name"/></td>
-        </script>
+                <td>
+                    <div class="btn-group">
+                    <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
+                    <input type="button" value="Delete" class="btn btn-danger" ng-click="vm.delStaff(s)"/>
+                    </div>
+                </td>
+                <td>{{s.SQUIRE_STAFF_ID}}</td>
+                <td><input type="text" ng-model="s.Staff_Type"/></td>
+                <td><input type="text" ng-model="s.NPI_Number"/></td>
+                <td><input type="text" ng-model="s.First_Name"/></td>
+                <td><input type="text" ng-model="s.Last_Name"/></td>
+                <td><input type="text" ng-model="s.Middle_Name"/></td>
+            </script>
+            </div>
+</div>
 
-    <div class="row" ng-controller="dataEntry.controller as vm">
-        <div class="col-md-4 col-md-offset-2">
-            
-                
+<div class="row" ng-controller="dataEntry.controller as vm">
 
-                  <script type="text/ng-template" id="multiStepModal.html">
+
+
+
+    <script type="text/ng-template" id="multiStepModal.html">
                         <div id="form.title" class="cbp-card__title modal-header">
                             <h2 class="modal-title">Staff Wizard</h2>
                         </div>
@@ -112,11 +115,16 @@
                         </div>
                   </script>
 
-               
-            
-        </div>
-        <button type="button" class="btn btn-default" ng-click="vm.openModalForm('lg')">Open staff wizard!</button>
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <button type="button" class="btn btn-primary btn-block" ng-click="vm.openModalForm('lg')">Open staff wizard!</button>
     </div>
+</div>
+</div>
+</div>
 </body>
 
 </html>

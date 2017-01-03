@@ -99,7 +99,8 @@ webpackJsonp([0],[
 	        var modalInstance = $uibModal.open({
 	            animation: vm.animationsEnabled,
 	            templateUrl: 'multiStepModal.html',
-	            size: size
+	            size: size,
+	            controller:'dataEntry.controller'
 
 	        });
 	    };

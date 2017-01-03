@@ -70,7 +70,8 @@ function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
         var modalInstance = $uibModal.open({
             animation: vm.animationsEnabled,
             templateUrl: 'multiStepModal.html',
-            size: size
+            size: size,
+            controller:'dataEntry.controller'
 
         });
     };

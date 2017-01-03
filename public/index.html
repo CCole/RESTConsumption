@@ -35,28 +35,28 @@
                     </thead>
                 </table>
                 <div class="floating-table-body" style="max-height: 200px;">
-    <table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
-        <thead>
-            <tr>
-                <th>Action</th>
-                <th>ID</th>
-                <th>Staff Type</th>
-                <th>NPI Number</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Middle Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
-                <!--moved table data into an inline template. Chore: move the template into separate file-->
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    
-    
-    <script type="text/ng-template" id="display">
+<table ng-controller="dataDisplay.controller as vm" class="cbp-table table-striped mdl-js-data-table">
+    <thead>
+        <tr>
+            <th>Action</th>
+            <th>ID</th>
+            <th>Staff Type</th>
+            <th>NPI Number</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Middle Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="s in vm.staff" ng-click="vm.selectStaff(s)" ng-include="vm.getTemplate(s)">
+            <!--moved table data into an inline template. Chore: move the template into separate file-->
+        </tr>
+    </tbody>
+</table>
+</div>
+
+
+<script type="text/ng-template" id="display">
                 <td>
                     
                 </td>
@@ -67,8 +67,8 @@
                 <td>{{s.Last_Name}}</td>
                 <td>{{s.Middle_Name}}</td>
             </script>
-    
-    <script type="text/ng-template" id="edit">
+
+<script type="text/ng-template" id="edit">
                 <td>
                     <div class="btn-group">
                     <input type="button" value="Edit" class="btn btn-warning" ng-click="vm.editRecord(s)"/>
@@ -82,13 +82,10 @@
                 <td><input type="text" ng-model="s.Last_Name"/></td>
                 <td><input type="text" ng-model="s.Middle_Name"/></td>
             </script>
-            </div>
+</div>
 </div>
 
 <div class="row" ng-controller="dataEntry.controller as vm">
-
-
-
 
     <script type="text/ng-template" id="multiStepModal.html">
                         <div id="form.title" class="cbp-card__title modal-header">
@@ -116,17 +113,15 @@
                   </script>
 
 
-
-
 <div class="row">
     <div class=" col-md-4 cbp-card-container">
         <div class="cbp-card cbp-card-shadow">
             <div class="cbp-card__title">
-            <h3 class="cbp-card__title-text">Staff Wizard</h3>
-          </div>
-          <div class="cbp-card__supporting-text">
-          Click the 'Start' button to create a new staff record.  
-        </div>
+                <h3 class="cbp-card__title-text">Staff Wizard</h3>
+            </div>
+            <div class="cbp-card__supporting-text">
+                Click the 'Start' button to create a new staff record.
+            </div>
             <div class="cbp-card__actions cbp-card--border">
                 <button type="button" class="btn btn-primary btn-lg pull-right" ng-click="vm.openModalForm('md')">Start!</button>
             </div>

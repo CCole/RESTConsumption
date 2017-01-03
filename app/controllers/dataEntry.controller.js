@@ -21,7 +21,7 @@ module.exports =
         })
         .controller('dataEntry.controller', enterData);
 
-function enterData(staffData, $sce, $scope, $timeout) {
+function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
     var vm = this;
 
     $scope.$on('$viewContentLoaded', function(){
@@ -62,6 +62,16 @@ function enterData(staffData, $sce, $scope, $timeout) {
 
         staffData.save(newStaff, function (response) {
             console.log(response.message);
+        });
+    };
+
+    vm.animationsEnabled = true;
+    vm.openModalForm = function(size){
+        var modalInstance = $uibModal.open({
+            animation: vm.animationsEnabled,
+            templateUrl: 'multiStepModal.html',
+            size: size
+
         });
     };
 

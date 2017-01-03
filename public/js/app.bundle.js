@@ -50,7 +50,7 @@ webpackJsonp([0],[
 	        })
 	        .controller('dataEntry.controller', enterData);
 
-	function enterData(staffData, $sce, $scope, $timeout) {
+	function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
 	    var vm = this;
 
 	    $scope.$on('$viewContentLoaded', function(){
@@ -91,6 +91,16 @@ webpackJsonp([0],[
 
 	        staffData.save(newStaff, function (response) {
 	            console.log(response.message);
+	        });
+	    };
+
+	    vm.animationsEnabled = true;
+	    vm.openModalForm = function(size){
+	        var modalInstance = $uibModal.open({
+	            animation: vm.animationsEnabled,
+	            templateUrl: 'multiStepModal.html',
+	            size: size
+
 	        });
 	    };
 

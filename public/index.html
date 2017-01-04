@@ -88,7 +88,13 @@
 <div class="row" ng-controller="dataEntry.controller as vm">
 
     <script type="text/ng-template" id="multiStepModal.html">
-                        <div id="form.title" class="cbp-card__title modal-header">
+
+                        <div id="form.title" class="modal-header">
+                            <button type="button" class="close" ng-click="vm.cancelModal()">
+                                x
+                                <span class="sr-only">Close</span>
+                            </button>
+
                             <h2 class="modal-title">Staff Wizard</h2>
                         </div>
     

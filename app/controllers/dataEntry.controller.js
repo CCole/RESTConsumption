@@ -1,10 +1,11 @@
 require('../services/staff.service.js');
 require('angular-ui-router');
 require('angular-animate');
+require('angular-ui-bootstrap');
 
 module.exports =
     angular
-        .module('dataEntry', ['staff', 'ui.router','ngAnimate'])
+        .module('dataEntry', ['staff', 'ui.router', 'ngAnimate','ui.bootstrap'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $stateProvider
@@ -24,8 +25,8 @@ module.exports =
 function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
     var vm = this;
 
-    $scope.$on('$viewContentLoaded', function(){
-        $timeout(function() {
+    $scope.$on('$viewContentLoaded', function () {
+        $timeout(function () {
             componentHandler.upgradeAllRegistered();
         })
     });
@@ -75,15 +76,20 @@ function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
     };
 
     vm.animationsEnabled = true;
-    vm.openModalForm = function(size){
+    vm.openModalForm = function (size) {
         var modalInstance = $uibModal.open({
             animation: vm.animationsEnabled,
             templateUrl: 'multiStepModal.html',
             size: size,
-            controller:'dataEntry.controller'
-
+            controller: 'modal.controller',
+            controllerAs: 'vm',
+            bindToController: true
         });
     };
+    
+
+     
+
 
     vm.npiLink = $sce.trustAsHtml('<b>The National Provider Identifier</b>&nbsp;is a unique 10-digit identifier number issued to health care providers. <a target="_blank" href="https://npiregistry.cms.hhs.gov/">Learn more</a>');
 }

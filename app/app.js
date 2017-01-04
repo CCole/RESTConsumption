@@ -2,6 +2,7 @@
 
 require('angular');
 require('./controllers/dataEntry.controller');
+require('./controllers/modal.controller');
 require('./controllers/dataDisplay.controller');
 require('./services/staff.service.js');
 require('angular-ui-mask');
@@ -13,6 +14,4 @@ angular.module('staffWizard',
 ['dataDisplay',
 'dataEntry',
 'ui.mask',
-'ui.bootstrap'
-
-]);
+'ui.bootstrap']);

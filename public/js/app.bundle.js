@@ -50,14 +50,10 @@ webpackJsonp([0],[
 	        })
 	        .controller('dataEntry.controller', enterData);
 
-	function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
+	function enterData(staffData, $sce, $uibModal) {
 	    var vm = this;
 
-	    $scope.$on('$viewContentLoaded', function () {
-	        $timeout(function () {
-	            componentHandler.upgradeAllRegistered();
-	        })
-	    });
+	    
 
 	    vm.placeMask = function () {
 	        vm.npiMask = "9999999999";
@@ -17350,12 +17346,18 @@ webpackJsonp([0],[
 	        .module('dataEntry')
 	        .controller('modal.controller', getModal);
 
-	function getModal($uibModalInstance) {
+	function getModal($uibModalInstance, $scope, $timeout) {
 	    var vm = this;
 	    vm.cancelModal = function () {
 	        $uibModalInstance.close();
 	        console.log("modal closed");
 	    };
+
+	    $scope.$on('$viewContentLoaded', function () {
+	        $timeout(function () {
+	            componentHandler.upgradeAllRegistered();
+	        })
+	    });
 	}
 
 /***/ },

@@ -22,14 +22,10 @@ module.exports =
         })
         .controller('dataEntry.controller', enterData);
 
-function enterData(staffData, $sce, $scope, $timeout, $uibModal) {
+function enterData(staffData, $sce, $uibModal) {
     var vm = this;
 
-    $scope.$on('$viewContentLoaded', function () {
-        $timeout(function () {
-            componentHandler.upgradeAllRegistered();
-        })
-    });
+    
 
     vm.placeMask = function () {
         vm.npiMask = "9999999999";

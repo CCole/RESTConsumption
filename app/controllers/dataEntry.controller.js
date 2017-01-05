@@ -22,42 +22,10 @@ module.exports =
         })
         .controller('dataEntry.controller', enterData);
 
-function enterData(staffData, $sce, $uibModal) {
+function enterData($uibModal) {
     var vm = this;
 
     
-
-    
-
-   
-
-
-    vm.postStaff = function () {
-
-        var newStaff = {
-            staffType: vm.staffType,
-            npiNumber: vm.npiNumber,
-            firstName: vm.firstName,
-            lastName: vm.lastName,
-            middleName: vm.middleName
-        };
-
-        var newSpecialty = {
-            specialty: vm.specialty,
-            specialtyDescription: vm.specialtyDescription,
-            credentialNumber: vm.credentialNumber,
-            issueDate: vm.issueDate,
-            issuingOrg: vm.issuingOrg
-
-        };
-
-        console.log(newStaff);
-        console.log(vm.staffType);
-
-        staffData.save(newStaff, function (response) {
-            console.log(response.message);
-        });
-    };
 
     vm.animationsEnabled = true;
     vm.openModalForm = function (size) {
@@ -75,5 +43,5 @@ function enterData(staffData, $sce, $uibModal) {
      
 
 
-    vm.npiLink = $sce.trustAsHtml('<b>The National Provider Identifier</b>&nbsp;is a unique 10-digit identifier number issued to health care providers. <a target="_blank" href="https://npiregistry.cms.hhs.gov/">Learn more</a>');
+    
 }

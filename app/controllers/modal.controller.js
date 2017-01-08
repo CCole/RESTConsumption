@@ -5,18 +5,23 @@ module.exports =
         .module('dataEntry')
         .controller('modal.controller', getModal);
 
-function getModal($uibModalInstance, $scope, $timeout, $sce, staffData) {
+function getModal($uibModalInstance, $scope, $timeout, $sce, staffData, staffRecord) {
     var vm = this;
+
+    $uibModalInstance.result.then(incompleteFormData, incompleteFormData);
+
+    var staffRecord = staffRecord;
+
+    function incompleteFormData() {
+     var holdStaff = staffRecord.build(vm) ;
+        console.log(holdStaff.staff);
+    }
+
 
     vm.postStaff = function () {
 
-        var newStaff = {
-            staffType: vm.staffType,
-            npiNumber: vm.npiNumber,
-            firstName: vm.firstName,
-            lastName: vm.lastName,
-            middleName: vm.middleName
-        };
+        var newStaff = staffRecord.build(vm);
+
 
         var newSpecialty = {
             specialty: vm.specialty,
@@ -27,10 +32,9 @@ function getModal($uibModalInstance, $scope, $timeout, $sce, staffData) {
 
         };
 
-        console.log(newStaff);
-        console.log(vm.staffType);
+        console.log(newStaff.staff);
 
-        staffData.save(newStaff, function (response) {
+        staffData.save(newStaff.staff, function (response) {
             console.log(response.message);
         });
     };

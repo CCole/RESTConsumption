@@ -6,11 +6,12 @@ webpackJsonp([0],[
 
 	__webpack_require__(1);
 	__webpack_require__(3);
-	__webpack_require__(12);
 	__webpack_require__(13);
-	__webpack_require__(4);
 	__webpack_require__(14);
-	__webpack_require__(10);
+	__webpack_require__(4);
+	__webpack_require__(7);
+	__webpack_require__(15);
+	__webpack_require__(11);
 
 
 	//setting the staffWizard Module - Only set this once then retrieve from this point after if I want to add stuff to it
@@ -18,7 +19,8 @@ webpackJsonp([0],[
 	['dataDisplay',
 	'dataEntry',
 	'ui.mask',
-	'ui.bootstrap']);
+	'ui.bootstrap'
+	]);
 
 /***/ },
 /* 1 */,
@@ -29,11 +31,12 @@ webpackJsonp([0],[
 	__webpack_require__(4);
 	__webpack_require__(7);
 	__webpack_require__(8);
-	__webpack_require__(10);
+	__webpack_require__(9);
+	__webpack_require__(11);
 
 	module.exports =
 	    angular
-	        .module('dataEntry', ['staff', 'ui.router', 'ngAnimate','ui.bootstrap'])
+	        .module('dataEntry', ['staff', 'record', 'ui.router', 'ngAnimate', 'ui.bootstrap'])
 	        .config(function ($stateProvider, $urlRouterProvider) {
 
 	            $stateProvider
@@ -50,10 +53,10 @@ webpackJsonp([0],[
 	        })
 	        .controller('dataEntry.controller', enterData);
 
-	function enterData($uibModal) {
+	function enterData($uibModal, staffRecord, $scope) {
 	    var vm = this;
 
-	    
+
 
 	    vm.animationsEnabled = true;
 	    vm.openModalForm = function (size) {
@@ -65,13 +68,10 @@ webpackJsonp([0],[
 	            controllerAs: 'vm',
 	            bindToController: true
 	        });
+
 	    };
-	    
-
-	     
 
 
-	    
 	}
 
 /***/ },
@@ -976,6 +976,38 @@ webpackJsonp([0],[
 
 /***/ },
 /* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(5);
+
+	module.exports =
+	    angular
+	        .module('record', ['ngResource'])
+	        .factory('staffRecord', manageRecord);
+
+	function manageRecord() {
+	    var record = {
+	        build: function buildRecord(vm) {
+	            var newStaffRecord = {
+	                staff: {
+	                    staffType: vm.staffType,
+	                    npiNumber: vm.npiNumber,
+	                    firstName: vm.firstName,
+	                    lastName: vm.lastName,
+	                    middleName: vm.middleName
+	                },
+	                specialty: {
+
+	                }
+	            };
+	            return newStaffRecord;
+	        }
+	    }
+	    return record;
+	} 
+
+/***/ },
+/* 8 */
 /***/ function(module, exports) {
 
 	/**
@@ -5589,15 +5621,15 @@ webpackJsonp([0],[
 	})(window, window.angular);
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(9);
+	__webpack_require__(10);
 	module.exports = 'ngAnimate';
 
 
 /***/ },
-/* 9 */
+/* 10 */
 /***/ function(module, exports) {
 
 	/**
@@ -9742,16 +9774,16 @@ webpackJsonp([0],[
 
 
 /***/ },
-/* 10 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(11);
+	__webpack_require__(12);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 11 */
+/* 12 */
 /***/ function(module, exports) {
 
 	/*
@@ -17292,7 +17324,7 @@ webpackJsonp([0],[
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 12 */
+/* 13 */
 /***/ function(module, exports) {
 
 	
@@ -17302,18 +17334,23 @@ webpackJsonp([0],[
 	        .module('dataEntry')
 	        .controller('modal.controller', getModal);
 
-	function getModal($uibModalInstance, $scope, $timeout, $sce, staffData) {
+	function getModal($uibModalInstance, $scope, $timeout, $sce, staffData, staffRecord) {
 	    var vm = this;
+
+	    $uibModalInstance.result.then(incompleteFormData, incompleteFormData);
+
+	    var staffRecord = staffRecord;
+
+	    function incompleteFormData() {
+	     var holdStaff = staffRecord.build(vm) ;
+	        console.log(holdStaff.staff);
+	    }
+
 
 	    vm.postStaff = function () {
 
-	        var newStaff = {
-	            staffType: vm.staffType,
-	            npiNumber: vm.npiNumber,
-	            firstName: vm.firstName,
-	            lastName: vm.lastName,
-	            middleName: vm.middleName
-	        };
+	        var newStaff = staffRecord.build(vm);
+
 
 	        var newSpecialty = {
 	            specialty: vm.specialty,
@@ -17324,10 +17361,9 @@ webpackJsonp([0],[
 
 	        };
 
-	        console.log(newStaff);
-	        console.log(vm.staffType);
+	        console.log(newStaff.staff);
 
-	        staffData.save(newStaff, function (response) {
+	        staffData.save(newStaff.staff, function (response) {
 	            console.log(response.message);
 	        });
 	    };
@@ -17363,7 +17399,7 @@ webpackJsonp([0],[
 	}
 
 /***/ },
-/* 13 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(4);
@@ -17415,19 +17451,19 @@ webpackJsonp([0],[
 	//add excpetions handling
 
 /***/ },
-/* 14 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//https://github.com/angular/angular.js/pull/10732
 
 	var angular = __webpack_require__(1);
-	var mask = __webpack_require__(15);
+	var mask = __webpack_require__(16);
 
 	module.exports = 'ui.mask';
 
 
 /***/ },
-/* 15 */
+/* 16 */
 /***/ function(module, exports) {
 
 	/*!

@@ -1,11 +1,12 @@
 require('../services/staff.service.js');
+require('../services/record.service.js');
 require('angular-ui-router');
 require('angular-animate');
 require('angular-ui-bootstrap');
 
 module.exports =
     angular
-        .module('dataEntry', ['staff', 'ui.router', 'ngAnimate','ui.bootstrap'])
+        .module('dataEntry', ['staff', 'record', 'ui.router', 'ngAnimate', 'ui.bootstrap'])
         .config(function ($stateProvider, $urlRouterProvider) {
 
             $stateProvider
@@ -22,10 +23,10 @@ module.exports =
         })
         .controller('dataEntry.controller', enterData);
 
-function enterData($uibModal) {
+function enterData($uibModal, staffRecord, $scope) {
     var vm = this;
 
-    
+
 
     vm.animationsEnabled = true;
     vm.openModalForm = function (size) {
@@ -37,11 +38,8 @@ function enterData($uibModal) {
             controllerAs: 'vm',
             bindToController: true
         });
+
     };
-    
-
-     
 
 
-    
 }

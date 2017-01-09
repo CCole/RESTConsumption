@@ -7,7 +7,7 @@ module.exports =
 
 function getModal($uibModalInstance, $scope, $timeout, $sce, staffData, staffRecord) {
     var vm = this;
-
+    //stores incomplete form data in staffRecord service when modal is closed or dismissed
     $uibModalInstance.result.then(incompleteFormData, incompleteFormData);
 
     var staffRecord = staffRecord;
